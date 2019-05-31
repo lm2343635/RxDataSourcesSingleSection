@@ -12,13 +12,24 @@ import RxDataSourcesSingleSection
 import SnapKit
 
 struct Person {
+    var id: String
     var name: String
     var company: String
     
     static let faker = Faker()
     static func fake() -> Person {
-        return Person(name: faker.name.name(), company: faker.company.name())
+        return Person(id: UUID().uuidString, name: faker.name.name(), company: faker.company.name())
     }
+}
+
+extension Person: AnimatableModel {
+    
+    typealias Identity = String
+    
+    var identity: String {
+        return id
+    }
+    
 }
 
 class PersonTableViewCell: UITableViewCell {
@@ -35,6 +46,7 @@ class PersonTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        selectionStyle = .none
         addSubview(nameLabel)
         addSubview(companyLabel)
         

@@ -10,7 +10,6 @@ import RxCocoa
 import RxSwift
 import RxDataSourcesSingleSection
 
-
 class SingleSectionTableViewModel {
     
     private let persons = BehaviorRelay<[Person]>(value: (0...5).map { _ in Person.fake() })
@@ -20,6 +19,5 @@ class SingleSectionTableViewModel {
     var personSection: Observable<SingleSection<Person>> {
         return persons.map { SingleSection.create($0) }
     }
-    
     
 }

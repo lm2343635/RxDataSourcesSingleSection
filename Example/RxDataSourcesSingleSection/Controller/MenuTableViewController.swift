@@ -20,6 +20,9 @@ class MenuTableViewController: UITableViewController {
         case 0:
             let singleSectionTableViewController = SingleSectionTableViewController(viewModel: .init())
             navigationController?.pushViewController(singleSectionTableViewController, animated: true)
+        case 1:
+            let animatableSingleSectionTableViewController = AnimatableSingleSectionTableViewController(viewModel: .init())
+            navigationController?.pushViewController(animatableSingleSectionTableViewController, animated: true)
         default:
             break
         }
