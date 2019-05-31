@@ -1,7 +1,10 @@
 use_frameworks!
+platform :ios, '10.0'
 
 target 'RxDataSourcesSingleSection_Example' do
   pod 'RxDataSourcesSingleSection', :path => '../'
+  pod 'SnapKit'
+  pod 'Fakery'
 
   target 'RxDataSourcesSingleSection_Tests' do
     inherit! :search_paths

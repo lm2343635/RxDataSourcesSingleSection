@@ -1,16 +1,59 @@
 PODS:
-  - RxDataSourcesSingleSection (0.1.0)
+  - Differentiator (4.0.1)
+  - Fakery (4.0.0)
+  - Reusable (4.1.0):
+    - Reusable/Storyboard (= 4.1.0)
+    - Reusable/View (= 4.1.0)
+  - Reusable/Storyboard (4.1.0)
+  - Reusable/View (4.1.0)
+  - RxCocoa (5.0.0):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxDataSourcesSingleSection (0.1.0):
+    - Reusable (~> 4)
+    - RxCocoa (~> 5)
+    - RxDataSources (~> 4)
+    - RxSwift (~> 5)
+  - RxRelay (5.0.0):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.0)
+  - SnapKit (5.0.0)
 
 DEPENDENCIES:
+  - Fakery
   - RxDataSourcesSingleSection (from `../`)
+  - SnapKit
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Differentiator
+    - Fakery
+    - Reusable
+    - RxCocoa
+    - RxDataSources
+    - RxRelay
+    - RxSwift
+    - SnapKit
 
 EXTERNAL SOURCES:
   RxDataSourcesSingleSection:
     :path: "../"
 
 SPEC CHECKSUMS:
-  RxDataSourcesSingleSection: 0e7fa22634d2bb31ff8538661dc7737ecd3428b1
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  Fakery: 476f6d947de432f84703acc830a1e7166330299b
+  Reusable: 82be188f29d96dc5eff0db7b2393bcc08d2cdd5b
+  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxDataSourcesSingleSection: af745ba20d1e738df57ee9f9e59d57c26438d682
+  RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
+  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
 
-PODFILE CHECKSUM: e1493ef0d632b62882d10d0872ba41f933558a24
+PODFILE CHECKSUM: 10fc58921a994b08a8cca62c4409cb078b883d2f
 
 COCOAPODS: 1.7.0

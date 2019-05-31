@@ -32,11 +32,8 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'RxDataSourcesSingleSection/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'RxDataSourcesSingleSection' => ['RxDataSourcesSingleSection/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'RxSwift', '~> 5'
+  s.dependency 'RxCocoa', '~> 5'
+  s.dependency 'RxDataSources', '~> 4'
+  s.dependency 'Reusable', '~> 4'
 end

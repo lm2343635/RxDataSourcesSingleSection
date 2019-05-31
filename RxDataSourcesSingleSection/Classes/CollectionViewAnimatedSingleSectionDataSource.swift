@@ -1,0 +1,4 @@
+
+import RxDataSources
+
+typealias CollectionViewAnimatedSingleSectionDataSource<T: AnimatableModel> = RxCollectionViewSectionedAnimatedDataSource<AnimatableSingleSectionModel<T>>
