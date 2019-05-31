@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'RxDataSourcesSingleSection_Example' do
+  pod 'RxDataSourcesSingleSection', :path => '../'
+
+  target 'RxDataSourcesSingleSection_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
