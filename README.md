@@ -5,6 +5,8 @@
 [![License](https://img.shields.io/cocoapods/l/RxDataSourcesSingleSection.svg?style=flat)](https://cocoapods.org/pods/RxDataSourcesSingleSection)
 [![Platform](https://img.shields.io/cocoapods/p/RxDataSourcesSingleSection.svg?style=flat)](https://cocoapods.org/pods/RxDataSourcesSingleSection)
 
+This library provides simple extensions to create a table view or collection view which contains only a single section, with the RxDataSources library.
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.

@@ -35,7 +35,7 @@
 /* Begin PBXFileReference section */
 		1E8E0532C51E8467760A2520 /* Pods_RxDataSourcesSingleSection_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxDataSourcesSingleSection_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C54714CF6A0003F9DF75A8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		3050E32E789E17293C886E95 /* RxDataSourcesSingleSection.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RxDataSourcesSingleSection.podspec; path = ../RxDataSourcesSingleSection.podspec; sourceTree = "<group>"; };
+		3050E32E789E17293C886E95 /* RxDataSourcesSingleSection.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RxDataSourcesSingleSection.podspec; path = ../RxDataSourcesSingleSection.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4ADD3AD2C8F6C75FD73C950D /* Pods_RxDataSourcesSingleSection_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxDataSourcesSingleSection_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* RxDataSourcesSingleSection_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxDataSourcesSingleSection_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
