@@ -23,6 +23,9 @@ class MenuTableViewController: UITableViewController {
         case 1:
             let animatableSingleSectionTableViewController = AnimatableSingleSectionTableViewController(viewModel: .init())
             navigationController?.pushViewController(animatableSingleSectionTableViewController, animated: true)
+        case 2:
+            let multiCellTypeSingleSectionTableViewController = MultiCellTypeSingleSectionTableViewController(viewModel: .init())
+            navigationController?.pushViewController(multiCellTypeSingleSectionTableViewController, animated: true)
         default:
             break
         }

@@ -14,6 +14,9 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		77BFF3F522A75AF700308394 /* CompanyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BFF3F422A75AF700308394 /* CompanyTableViewCell.swift */; };
+		77BFF3F822A75EF800308394 /* MultiCellTypeSingleSectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BFF3F722A75EF800308394 /* MultiCellTypeSingleSectionTableViewController.swift */; };
+		77BFF3FA22A75F0000308394 /* MultiCellTypeSingleSectionTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BFF3F922A75F0000308394 /* MultiCellTypeSingleSectionTableViewModel.swift */; };
 		77FF690A22A129ED0060BCE7 /* SingleSectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FF690922A129ED0060BCE7 /* SingleSectionTableViewController.swift */; };
 		77FF690C22A129F50060BCE7 /* SingleSectionTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FF690B22A129F50060BCE7 /* SingleSectionTableViewModel.swift */; };
 		77FF690F22A12D7F0060BCE7 /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FF690E22A12D7F0060BCE7 /* PersonTableViewCell.swift */; };
@@ -47,6 +50,9 @@
 		607FACE51AFB9204008FA782 /* RxDataSourcesSingleSection_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxDataSourcesSingleSection_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		77BFF3F422A75AF700308394 /* CompanyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyTableViewCell.swift; sourceTree = "<group>"; };
+		77BFF3F722A75EF800308394 /* MultiCellTypeSingleSectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiCellTypeSingleSectionTableViewController.swift; sourceTree = "<group>"; };
+		77BFF3F922A75F0000308394 /* MultiCellTypeSingleSectionTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiCellTypeSingleSectionTableViewModel.swift; sourceTree = "<group>"; };
 		77FF690922A129ED0060BCE7 /* SingleSectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSectionTableViewController.swift; sourceTree = "<group>"; };
 		77FF690B22A129F50060BCE7 /* SingleSectionTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSectionTableViewModel.swift; sourceTree = "<group>"; };
 		77FF690E22A12D7F0060BCE7 /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
@@ -112,6 +118,7 @@
 		607FACD21AFB9204008FA782 /* Example for RxDataSourcesSingleSection */ = {
 			isa = PBXGroup;
 			children = (
+				77BFF3F622A75B0F00308394 /* Cell */,
 				77FF690D22A129FE0060BCE7 /* Controller */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -158,15 +165,25 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
+		77BFF3F622A75B0F00308394 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				77FF690E22A12D7F0060BCE7 /* PersonTableViewCell.swift */,
+				77BFF3F422A75AF700308394 /* CompanyTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		77FF690D22A129FE0060BCE7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				77FF691222A135440060BCE7 /* AnimatableSingleSectionTableViewController.swift */,
 				77FF691022A1353C0060BCE7 /* AnimatableSingleSectionTableViewModel.swift */,
 				607FACD71AFB9204008FA782 /* MenuTableViewController.swift */,
-				77FF690E22A12D7F0060BCE7 /* PersonTableViewCell.swift */,
 				77FF690922A129ED0060BCE7 /* SingleSectionTableViewController.swift */,
 				77FF690B22A129F50060BCE7 /* SingleSectionTableViewModel.swift */,
+				77BFF3F722A75EF800308394 /* MultiCellTypeSingleSectionTableViewController.swift */,
+				77BFF3F922A75F0000308394 /* MultiCellTypeSingleSectionTableViewModel.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -295,6 +312,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-RxDataSourcesSingleSection_Example/Pods-RxDataSourcesSingleSection_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/Fakery/Fakery.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
@@ -307,6 +325,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fakery.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reusable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
@@ -392,10 +411,13 @@
 				607FACD81AFB9204008FA782 /* MenuTableViewController.swift in Sources */,
 				77FF691122A1353C0060BCE7 /* AnimatableSingleSectionTableViewModel.swift in Sources */,
 				77FF691322A135440060BCE7 /* AnimatableSingleSectionTableViewController.swift in Sources */,
+				77BFF3F522A75AF700308394 /* CompanyTableViewCell.swift in Sources */,
 				77FF690C22A129F50060BCE7 /* SingleSectionTableViewModel.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				77FF690F22A12D7F0060BCE7 /* PersonTableViewCell.swift in Sources */,
 				77FF690A22A129ED0060BCE7 /* SingleSectionTableViewController.swift in Sources */,
+				77BFF3F822A75EF800308394 /* MultiCellTypeSingleSectionTableViewController.swift in Sources */,
+				77BFF3FA22A75F0000308394 /* MultiCellTypeSingleSectionTableViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

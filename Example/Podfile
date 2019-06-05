@@ -5,10 +5,9 @@ target 'RxDataSourcesSingleSection_Example' do
   pod 'RxDataSourcesSingleSection', :path => '../'
   pod 'SnapKit'
   pod 'Fakery'
+  pod 'Kingfisher'
 
   target 'RxDataSourcesSingleSection_Tests' do
-    inherit! :search_paths
-
-    
+    inherit! :search_paths  
   end
 end

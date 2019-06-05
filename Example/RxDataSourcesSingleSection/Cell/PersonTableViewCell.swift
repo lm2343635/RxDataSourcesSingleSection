@@ -12,13 +12,17 @@ import RxDataSourcesSingleSection
 import SnapKit
 
 struct Person {
-    var id: String
+    
+    let id = UUID().uuidString
     var name: String
-    var company: String
+    var address: String
     
     static let faker = Faker()
     static func fake() -> Person {
-        return Person(id: UUID().uuidString, name: faker.name.name(), company: faker.company.name())
+        return Person(
+            name: faker.name.name(),
+            address: faker.address.streetName() + ", " + faker.address.city() + ", " + faker.address.country()
+        )
     }
 }
 
@@ -36,9 +40,9 @@ class PersonTableViewCell: UITableViewCell {
     
     private lazy var nameLabel = UILabel()
     
-    private lazy var companyLabel: UILabel = {
+    private lazy var addressLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15)
+        label.font = .systemFont(ofSize: 15)
         label.textColor = .lightGray
         return label
     }()
@@ -48,7 +52,7 @@ class PersonTableViewCell: UITableViewCell {
         
         selectionStyle = .none
         addSubview(nameLabel)
-        addSubview(companyLabel)
+        addSubview(addressLabel)
         
         createConstraints()
     }
@@ -60,11 +64,11 @@ class PersonTableViewCell: UITableViewCell {
     private func createConstraints() {
         
         nameLabel.snp.makeConstraints {
-            $0.left.equalToSuperview().offset(17)
+            $0.left.equalToSuperview().offset(20)
             $0.top.equalToSuperview().offset(7)
         }
         
-        companyLabel.snp.makeConstraints {
+        addressLabel.snp.makeConstraints {
             $0.left.equalTo(nameLabel)
             $0.top.equalTo(nameLabel.snp.bottom).offset(5)
             $0.bottom.equalToSuperview().offset(-5)
@@ -80,7 +84,7 @@ extension PersonTableViewCell: Configurable {
     
     func configure(_ model: Person) {
         nameLabel.text = model.name
-        companyLabel.text = model.company
+        addressLabel.text = model.address
     }
     
 }
