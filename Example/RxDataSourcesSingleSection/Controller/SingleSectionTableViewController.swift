@@ -23,7 +23,7 @@ class SingleSectionTableViewController: UIViewController {
         return tableView
     }()
     
-    private lazy var dataSource = TableViewSingleSectionDataSource<Person>.configure(cellType: PersonTableViewCell.self)
+    private lazy var dataSource = PersonTableViewCell.tableViewSingleSectionDataSource()
     
     init(viewModel: SingleSectionTableViewModel) {
         self.viewModel = viewModel

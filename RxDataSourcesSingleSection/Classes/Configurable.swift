@@ -34,6 +34,38 @@ public protocol Configurable: Reusable {
     
 }
 
+extension Configurable where Self: UITableViewCell {
+    
+    public static func tableViewSingleSectionDataSource() -> TableViewSingleSectionDataSource<Model> {
+        return TableViewSingleSectionDataSource<Model>.configure(cellType: self)
+    }
+    
+}
+
+extension Configurable where Self: UITableViewCell, Model: AnimatableModel {
+    
+    public static func tableViewAnimatedSingleSectionDataSource()-> TableViewAnimatedSingleSectionDataSource<Model> {
+        return TableViewAnimatedSingleSectionDataSource<Model>.configure(cellType: self)
+    }
+
+}
+
+extension Configurable where Self: UICollectionViewCell {
+    
+    public static func collectionViewSingleSectionDataSource() -> CollectionViewSingleSectionDataSource<Model> {
+        return CollectionViewSingleSectionDataSource<Model>.configure(cellType: self)
+    }
+    
+}
+
+extension Configurable where Self: UICollectionViewCell, Model: AnimatableModel {
+    
+    public static func collectionViewAnimatedSingleSectionDataSource() -> CollectionViewAnimatedSingleSectionDataSource<Model> {
+        return CollectionViewAnimatedSingleSectionDataSource<Model>.configure(cellType: self)
+    }
+    
+}
+
 extension UITableView {
 
     public func dequeueReusableCell<T: UITableViewCell>(for indexPath: IndexPath, model: T.Model, cellType: T.Type = T.self) -> T where T: Configurable {

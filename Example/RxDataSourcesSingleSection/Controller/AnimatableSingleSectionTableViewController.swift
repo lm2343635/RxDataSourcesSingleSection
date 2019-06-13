@@ -28,8 +28,7 @@ class AnimatableSingleSectionTableViewController: UIViewController {
         return tableView
     }()
     
-    private lazy var dataSource = TableViewAnimatedSingleSectionDataSource<Person>.configure(cellType: PersonTableViewCell.self)
-    
+    private lazy var dataSource = PersonTableViewCell.tableViewAnimatedSingleSectionDataSource()
     
     private let viewModel: AnimatableSingleSectionTableViewModel
     private let disposeBag = DisposeBag()
