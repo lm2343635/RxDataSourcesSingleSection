@@ -36,39 +36,44 @@ public protocol Configurable: Reusable {
 
 extension Configurable where Self: UITableViewCell {
     
-    public static func tableViewSingleSectionDataSource() -> TableViewSingleSectionDataSource<Model> {
-        return TableViewSingleSectionDataSource<Model>.configure(cellType: self)
+    public static func tableViewSingleSectionDataSource(configureCell: ((Self) -> Void)? = nil)
+        -> TableViewSingleSectionDataSource<Model> {
+        return TableViewSingleSectionDataSource<Model>.configure(cellType: self, configureCell: configureCell)
     }
     
 }
 
 extension Configurable where Self: UITableViewCell, Model: AnimatableModel {
     
-    public static func tableViewAnimatedSingleSectionDataSource()-> TableViewAnimatedSingleSectionDataSource<Model> {
-        return TableViewAnimatedSingleSectionDataSource<Model>.configure(cellType: self)
+    public static func tableViewAnimatedSingleSectionDataSource(configureCell: ((Self) -> Void)? = nil)
+        -> TableViewAnimatedSingleSectionDataSource<Model> {
+        return TableViewAnimatedSingleSectionDataSource<Model>.configure(cellType: self, configureCell: configureCell)
     }
 
 }
 
 extension Configurable where Self: UICollectionViewCell {
     
-    public static func collectionViewSingleSectionDataSource() -> CollectionViewSingleSectionDataSource<Model> {
-        return CollectionViewSingleSectionDataSource<Model>.configure(cellType: self)
+    public static func collectionViewSingleSectionDataSource(configureCell: ((Self) -> Void)? = nil)
+        -> CollectionViewSingleSectionDataSource<Model> {
+        return CollectionViewSingleSectionDataSource<Model>.configure(cellType: self, configureCell: configureCell)
     }
     
 }
 
 extension Configurable where Self: UICollectionViewCell, Model: AnimatableModel {
     
-    public static func collectionViewAnimatedSingleSectionDataSource() -> CollectionViewAnimatedSingleSectionDataSource<Model> {
-        return CollectionViewAnimatedSingleSectionDataSource<Model>.configure(cellType: self)
+    public static func collectionViewAnimatedSingleSectionDataSource(configureCell: ((Self) -> Void)? = nil)
+        -> CollectionViewAnimatedSingleSectionDataSource<Model> {
+        return CollectionViewAnimatedSingleSectionDataSource<Model>.configure(cellType: self, configureCell: configureCell)
     }
     
 }
 
 extension UITableView {
 
-    public func dequeueReusableCell<T: UITableViewCell>(for indexPath: IndexPath, model: T.Model, cellType: T.Type = T.self) -> T where T: Configurable {
+    public func dequeueReusableCell<Cell: UITableViewCell>(for indexPath: IndexPath, model: Cell.Model, cellType: Cell.Type = Cell.self)
+        -> Cell where Cell: Configurable {
         let cell = dequeueReusableCell(for: indexPath, cellType: cellType)
         cell.configure(model)
         return cell
@@ -78,7 +83,8 @@ extension UITableView {
 
 extension UICollectionView {
     
-    public func dequeueReusableCell<T: UICollectionViewCell>(for indexPath: IndexPath, model: T.Model, cellType: T.Type = T.self) -> T where T: Configurable {
+    public func dequeueReusableCell<Cell: UICollectionViewCell>(for indexPath: IndexPath, model: Cell.Model, cellType: Cell.Type = Cell.self)
+        -> Cell where Cell: Configurable {
         let cell = dequeueReusableCell(for: indexPath, cellType: cellType)
         cell.configure(model)
         return cell

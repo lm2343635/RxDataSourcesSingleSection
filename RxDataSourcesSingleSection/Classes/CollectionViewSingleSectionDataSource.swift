@@ -29,9 +29,12 @@ public typealias CollectionViewSingleSectionDataSource<T> = RxCollectionViewSect
 
 extension CollectionViewSingleSectionDataSource {
     
-    public static func configure<T: UICollectionViewCell>(cellType: T.Type) -> CollectionViewSingleSectionDataSource<T.Model> where T: Configurable {
-        return CollectionViewSingleSectionDataSource<T.Model>(configureCell: { _, collectionView, indexPath, model in
-            return collectionView.dequeueReusableCell(for: indexPath, model: model, cellType: cellType)
+    public static func configure<Cell: UICollectionViewCell>(cellType: Cell.Type, configureCell: ((Cell) -> Void)? = nil)
+        -> CollectionViewSingleSectionDataSource<Cell.Model> where Cell: Configurable {
+        return CollectionViewSingleSectionDataSource<Cell.Model>(configureCell: { (_, collectionView, indexPath, model) in
+            let cell = collectionView.dequeueReusableCell(for: indexPath, model: model, cellType: cellType)
+            configureCell?(cell)
+            return cell
         })
     }
     

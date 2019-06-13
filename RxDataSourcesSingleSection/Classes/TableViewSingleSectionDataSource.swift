@@ -29,9 +29,12 @@ public typealias TableViewSingleSectionDataSource<T> = RxTableViewSectionedReloa
 
 extension TableViewSingleSectionDataSource {
     
-    public static func configure<T: UITableViewCell>(cellType: T.Type) -> TableViewSingleSectionDataSource<T.Model> where T: Configurable {
-        return TableViewSingleSectionDataSource<T.Model>(configureCell: { (_, tableView, indexPath, model) -> UITableViewCell in
-            return tableView.dequeueReusableCell(for: indexPath, model: model, cellType: cellType)
+    public static func configure<Cell: UITableViewCell>(cellType: Cell.Type, configureCell: ((Cell) -> Void)? = nil)
+        -> TableViewSingleSectionDataSource<Cell.Model> where Cell: Configurable {
+        return TableViewSingleSectionDataSource<Cell.Model>(configureCell: { (_, tableView, indexPath, model) in
+            let cell = tableView.dequeueReusableCell(for: indexPath, model: model, cellType: cellType)
+            configureCell?(cell)
+            return cell
         })
     }
     

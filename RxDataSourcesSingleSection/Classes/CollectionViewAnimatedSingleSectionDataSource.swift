@@ -25,13 +25,17 @@
 
 import RxDataSources
 
-public typealias CollectionViewAnimatedSingleSectionDataSource<T: AnimatableModel> = RxCollectionViewSectionedAnimatedDataSource<AnimatableSingleSectionModel<T>>
+public typealias CollectionViewAnimatedSingleSectionDataSource<T: AnimatableModel>
+    = RxCollectionViewSectionedAnimatedDataSource<AnimatableSingleSectionModel<T>>
 
 extension CollectionViewAnimatedSingleSectionDataSource {
     
-    public static func configure<T: UICollectionViewCell>(cellType: T.Type) -> CollectionViewAnimatedSingleSectionDataSource<T.Model> where T: Configurable {
-        return CollectionViewAnimatedSingleSectionDataSource<T.Model>(configureCell: { _, collectionView, indexPath, model in
-            return collectionView.dequeueReusableCell(for: indexPath, model: model, cellType: cellType)
+    public static func configure<Cell: UICollectionViewCell>(cellType: Cell.Type, configureCell: ((Cell) -> Void)? = nil)
+        -> CollectionViewAnimatedSingleSectionDataSource<Cell.Model> where Cell: Configurable {
+        return CollectionViewAnimatedSingleSectionDataSource<Cell.Model>(configureCell: { (_, collectionView, indexPath, model) in
+            let cell = collectionView.dequeueReusableCell(for: indexPath, model: model, cellType: cellType)
+            configureCell?(cell)
+            return cell
         })
     }
     
