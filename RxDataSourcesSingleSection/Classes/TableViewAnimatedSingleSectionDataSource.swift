@@ -30,11 +30,11 @@ public typealias TableViewAnimatedSingleSectionDataSource<T: AnimatableModel>
 
 extension TableViewAnimatedSingleSectionDataSource {
     
-    public static func configure<Cell: UITableViewCell>(cellType: Cell.Type, configureCell: ((Cell) -> Void)? = nil)
+    public static func configure<Cell: UITableViewCell>(cellType: Cell.Type, configureCell: Cell.ConfigureCell? = nil)
         -> TableViewAnimatedSingleSectionDataSource<Cell.Model> where Cell: Configurable {
-        return TableViewAnimatedSingleSectionDataSource<Cell.Model>(configureCell: { (_, tableView, indexPath, model) in
+        return TableViewAnimatedSingleSectionDataSource<Cell.Model>(configureCell: { _, tableView, indexPath, model in
             let cell = tableView.dequeueReusableCell(for: indexPath, model: model, cellType: cellType)
-            configureCell?(cell)
+            configureCell?(cell, indexPath, model)
             return cell
         })
     }

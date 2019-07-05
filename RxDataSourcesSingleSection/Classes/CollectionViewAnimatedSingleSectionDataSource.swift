@@ -30,11 +30,11 @@ public typealias CollectionViewAnimatedSingleSectionDataSource<T: AnimatableMode
 
 extension CollectionViewAnimatedSingleSectionDataSource {
     
-    public static func configure<Cell: UICollectionViewCell>(cellType: Cell.Type, configureCell: ((Cell) -> Void)? = nil)
+    public static func configure<Cell: UICollectionViewCell>(cellType: Cell.Type, configureCell: Cell.ConfigureCell? = nil)
         -> CollectionViewAnimatedSingleSectionDataSource<Cell.Model> where Cell: Configurable {
-        return CollectionViewAnimatedSingleSectionDataSource<Cell.Model>(configureCell: { (_, collectionView, indexPath, model) in
+        return CollectionViewAnimatedSingleSectionDataSource<Cell.Model>(configureCell: { _, collectionView, indexPath, model in
             let cell = collectionView.dequeueReusableCell(for: indexPath, model: model, cellType: cellType)
-            configureCell?(cell)
+            configureCell?(cell, indexPath, model)
             return cell
         })
     }

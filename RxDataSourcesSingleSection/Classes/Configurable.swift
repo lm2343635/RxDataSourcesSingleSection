@@ -28,6 +28,8 @@ import UIKit
 
 public protocol Configurable: Reusable {
     
+    typealias ConfigureCell = (Self, IndexPath, Model) -> Void
+    
     associatedtype Model
     
     func configure(_ model: Model)
@@ -36,7 +38,7 @@ public protocol Configurable: Reusable {
 
 extension Configurable where Self: UITableViewCell {
     
-    public static func tableViewSingleSectionDataSource(configureCell: ((Self) -> Void)? = nil)
+    public static func tableViewSingleSectionDataSource(configureCell: ConfigureCell? = nil)
         -> TableViewSingleSectionDataSource<Model> {
         return TableViewSingleSectionDataSource<Model>.configure(cellType: self, configureCell: configureCell)
     }
@@ -45,7 +47,7 @@ extension Configurable where Self: UITableViewCell {
 
 extension Configurable where Self: UITableViewCell, Model: AnimatableModel {
     
-    public static func tableViewAnimatedSingleSectionDataSource(configureCell: ((Self) -> Void)? = nil)
+    public static func tableViewAnimatedSingleSectionDataSource(configureCell: ConfigureCell? = nil)
         -> TableViewAnimatedSingleSectionDataSource<Model> {
         return TableViewAnimatedSingleSectionDataSource<Model>.configure(cellType: self, configureCell: configureCell)
     }
@@ -54,7 +56,7 @@ extension Configurable where Self: UITableViewCell, Model: AnimatableModel {
 
 extension Configurable where Self: UICollectionViewCell {
     
-    public static func collectionViewSingleSectionDataSource(configureCell: ((Self) -> Void)? = nil)
+    public static func collectionViewSingleSectionDataSource(configureCell: ConfigureCell? = nil)
         -> CollectionViewSingleSectionDataSource<Model> {
         return CollectionViewSingleSectionDataSource<Model>.configure(cellType: self, configureCell: configureCell)
     }
@@ -63,7 +65,7 @@ extension Configurable where Self: UICollectionViewCell {
 
 extension Configurable where Self: UICollectionViewCell, Model: AnimatableModel {
     
-    public static func collectionViewAnimatedSingleSectionDataSource(configureCell: ((Self) -> Void)? = nil)
+    public static func collectionViewAnimatedSingleSectionDataSource(configureCell: ConfigureCell? = nil)
         -> CollectionViewAnimatedSingleSectionDataSource<Model> {
         return CollectionViewAnimatedSingleSectionDataSource<Model>.configure(cellType: self, configureCell: configureCell)
     }

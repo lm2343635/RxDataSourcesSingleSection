@@ -1,7 +1,7 @@
 PODS:
   - Differentiator (4.0.1)
   - Fakery (4.0.0)
-  - Kingfisher (5.5.0)
+  - Kingfisher (5.7.0)
   - Reusable (4.1.0):
     - Reusable/Storyboard (= 4.1.0)
     - Reusable/View (= 4.1.0)
@@ -14,7 +14,7 @@ PODS:
     - Differentiator (~> 4.0)
     - RxCocoa (~> 5.0)
     - RxSwift (~> 5.0)
-  - RxDataSourcesSingleSection (0.1):
+  - RxDataSourcesSingleSection (0.1.1):
     - Reusable (~> 4)
     - RxCocoa (~> 5)
     - RxDataSources (~> 4)
@@ -49,15 +49,15 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   Fakery: 476f6d947de432f84703acc830a1e7166330299b
-  Kingfisher: 6fe5e67a90fd335e49b0f5c075ff55ac5ebedd94
+  Kingfisher: c7d211b54f1f30d8060aadab177d52b4349c825b
   Reusable: 82be188f29d96dc5eff0db7b2393bcc08d2cdd5b
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
-  RxDataSourcesSingleSection: af64f1489d3d40cdeb17702f42b1feee0ee8fb14
+  RxDataSourcesSingleSection: 42ee6900e6c069ce2d0bb9a1cd81308dce772d28
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
 
 PODFILE CHECKSUM: ad30af53858c418f3cfc162561f71b0d01b04479
 
-COCOAPODS: 1.7.1
+COCOAPODS: 1.7.3
