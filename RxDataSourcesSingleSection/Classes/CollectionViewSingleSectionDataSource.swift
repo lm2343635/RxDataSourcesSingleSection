@@ -29,13 +29,23 @@ public typealias CollectionViewSingleSectionDataSource<T> = RxCollectionViewSect
 
 extension CollectionViewSingleSectionDataSource {
     
-    public static func configure<Cell: UICollectionViewCell>(cellType: Cell.Type, configureCell: Cell.ConfigureCell? = nil)
-        -> CollectionViewSingleSectionDataSource<Cell.Model> where Cell: Configurable {
-        return CollectionViewSingleSectionDataSource<Cell.Model>(configureCell: { _, collectionView, indexPath, model in
-            let cell = collectionView.dequeueReusableCell(for: indexPath, model: model, cellType: cellType)
-            configureCell?(cell, indexPath, model)
-            return cell
-        })
+    public static func configure<Cell: UICollectionViewCell>(
+        cellType: Cell.Type,
+        configureCell: Cell.ConfigureCell? = nil,
+        configureSupplementaryView: CollectionViewSingleSectionDataSource<Cell.Model>.ConfigureSupplementaryView? = nil,
+        moveItem: @escaping CollectionViewSingleSectionDataSource<Cell.Model>.MoveItem = { _, _, _ in () },
+        canMoveItemAtIndexPath: @escaping CollectionViewSingleSectionDataSource<Cell.Model>.CanMoveItemAtIndexPath = { _, _ in false }
+    ) -> CollectionViewSingleSectionDataSource<Cell.Model> where Cell: Configurable {
+        return CollectionViewSingleSectionDataSource<Cell.Model>(
+            configureCell: { _, collectionView, indexPath, model in
+                let cell = collectionView.dequeueReusableCell(for: indexPath, model: model, cellType: cellType)
+                configureCell?(cell, indexPath, model)
+                return cell
+        },
+            configureSupplementaryView: configureSupplementaryView,
+            moveItem: moveItem,
+            canMoveItemAtIndexPath: canMoveItemAtIndexPath
+        )
     }
     
 }

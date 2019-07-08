@@ -93,18 +93,42 @@ extension Configurable where Self: UITableViewCell, Model: AnimatableModel {
 
 extension Configurable where Self: UICollectionViewCell {
     
-    public static func collectionViewSingleSectionDataSource(configureCell: ConfigureCell? = nil)
-        -> CollectionViewSingleSectionDataSource<Model> {
-        return CollectionViewSingleSectionDataSource<Model>.configure(cellType: self, configureCell: configureCell)
+    public static func collectionViewSingleSectionDataSource(
+        configureCell: ConfigureCell? = nil,
+        configureSupplementaryView: CollectionViewSingleSectionDataSource<Model>.ConfigureSupplementaryView? = nil,
+        moveItem: @escaping CollectionViewSingleSectionDataSource<Model>.MoveItem = { _, _, _ in () },
+        canMoveItemAtIndexPath: @escaping CollectionViewSingleSectionDataSource<Model>.CanMoveItemAtIndexPath = { _, _ in false }
+    ) -> CollectionViewSingleSectionDataSource<Model> {
+        return CollectionViewSingleSectionDataSource<Model>.configure(
+            cellType: self,
+            configureCell: configureCell,
+            configureSupplementaryView: configureSupplementaryView,
+            moveItem: moveItem,
+            canMoveItemAtIndexPath: canMoveItemAtIndexPath
+        )
     }
     
 }
 
 extension Configurable where Self: UICollectionViewCell, Model: AnimatableModel {
     
-    public static func collectionViewAnimatedSingleSectionDataSource(configureCell: ConfigureCell? = nil)
-        -> CollectionViewAnimatedSingleSectionDataSource<Model> {
-        return CollectionViewAnimatedSingleSectionDataSource<Model>.configure(cellType: self, configureCell: configureCell)
+    public static func collectionViewAnimatedSingleSectionDataSource(
+        animationConfiguration: AnimationConfiguration = AnimationConfiguration(),
+        decideViewTransition: @escaping CollectionViewAnimatedSingleSectionDataSource<Model>.DecideViewTransition = { _, _, _ in .animated },
+        configureCell: ConfigureCell? = nil,
+        configureSupplementaryView: CollectionViewAnimatedSingleSectionDataSource<Model>.ConfigureSupplementaryView? = nil,
+        moveItem: @escaping CollectionViewAnimatedSingleSectionDataSource<Model>.MoveItem = { _, _, _ in () },
+        canMoveItemAtIndexPath: @escaping CollectionViewAnimatedSingleSectionDataSource<Model>.CanMoveItemAtIndexPath = { _, _ in false }
+    ) -> CollectionViewAnimatedSingleSectionDataSource<Model> {
+        return CollectionViewAnimatedSingleSectionDataSource<Model>.configure(
+            animationConfiguration: animationConfiguration,
+            decideViewTransition: decideViewTransition,
+            cellType: self,
+            configureCell: configureCell,
+            configureSupplementaryView: configureSupplementaryView,
+            moveItem: moveItem,
+            canMoveItemAtIndexPath: canMoveItemAtIndexPath
+        )
     }
     
 }

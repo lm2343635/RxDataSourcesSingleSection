@@ -30,13 +30,27 @@ public typealias CollectionViewAnimatedSingleSectionDataSource<T: AnimatableMode
 
 extension CollectionViewAnimatedSingleSectionDataSource {
     
-    public static func configure<Cell: UICollectionViewCell>(cellType: Cell.Type, configureCell: Cell.ConfigureCell? = nil)
-        -> CollectionViewAnimatedSingleSectionDataSource<Cell.Model> where Cell: Configurable {
-        return CollectionViewAnimatedSingleSectionDataSource<Cell.Model>(configureCell: { _, collectionView, indexPath, model in
-            let cell = collectionView.dequeueReusableCell(for: indexPath, model: model, cellType: cellType)
-            configureCell?(cell, indexPath, model)
-            return cell
-        })
+    public static func configure<Cell: UICollectionViewCell>(
+        animationConfiguration: AnimationConfiguration = AnimationConfiguration(),
+        decideViewTransition: @escaping CollectionViewAnimatedSingleSectionDataSource<Cell.Model>.DecideViewTransition = { _, _, _ in .animated },
+        cellType: Cell.Type,
+        configureCell: Cell.ConfigureCell? = nil,
+        configureSupplementaryView: CollectionViewAnimatedSingleSectionDataSource<Cell.Model>.ConfigureSupplementaryView? = nil,
+        moveItem: @escaping CollectionViewAnimatedSingleSectionDataSource<Cell.Model>.MoveItem = { _, _, _ in () },
+        canMoveItemAtIndexPath: @escaping CollectionViewAnimatedSingleSectionDataSource<Cell.Model>.CanMoveItemAtIndexPath = { _, _ in false }
+    ) -> CollectionViewAnimatedSingleSectionDataSource<Cell.Model> where Cell: Configurable {
+        return CollectionViewAnimatedSingleSectionDataSource<Cell.Model>(
+            animationConfiguration: animationConfiguration,
+            decideViewTransition: decideViewTransition,
+            configureCell: { _, collectionView, indexPath, model in
+                let cell = collectionView.dequeueReusableCell(for: indexPath, model: model, cellType: cellType)
+                configureCell?(cell, indexPath, model)
+                return cell
+            },
+            configureSupplementaryView: configureSupplementaryView,
+            moveItem: moveItem,
+            canMoveItemAtIndexPath: canMoveItemAtIndexPath
+        )
     }
     
 }
