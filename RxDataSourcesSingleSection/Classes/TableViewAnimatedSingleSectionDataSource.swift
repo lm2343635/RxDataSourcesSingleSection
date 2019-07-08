@@ -30,13 +30,33 @@ public typealias TableViewAnimatedSingleSectionDataSource<T: AnimatableModel>
 
 extension TableViewAnimatedSingleSectionDataSource {
     
-    public static func configure<Cell: UITableViewCell>(cellType: Cell.Type, configureCell: Cell.ConfigureCell? = nil)
-        -> TableViewAnimatedSingleSectionDataSource<Cell.Model> where Cell: Configurable {
-        return TableViewAnimatedSingleSectionDataSource<Cell.Model>(configureCell: { _, tableView, indexPath, model in
-            let cell = tableView.dequeueReusableCell(for: indexPath, model: model, cellType: cellType)
-            configureCell?(cell, indexPath, model)
-            return cell
-        })
+    public static func configure<Cell: UITableViewCell>(
+        animationConfiguration: AnimationConfiguration = AnimationConfiguration(),
+        decideViewTransition: @escaping TableViewAnimatedSingleSectionDataSource<Cell.Model>.DecideViewTransition = { _, _, _ in .animated },
+        cellType: Cell.Type,
+        configureCell: Cell.ConfigureCell? = nil,
+        titleForHeaderInSection: @escaping TableViewAnimatedSingleSectionDataSource<Cell.Model>.TitleForFooterInSection = { _, _ in nil },
+        titleForFooterInSection: @escaping TableViewAnimatedSingleSectionDataSource<Cell.Model>.TitleForFooterInSection = { _, _ in nil },
+        canEditRowAtIndexPath: @escaping TableViewAnimatedSingleSectionDataSource<Cell.Model>.CanEditRowAtIndexPath = { _, _ in false },
+        canMoveRowAtIndexPath: @escaping TableViewAnimatedSingleSectionDataSource<Cell.Model>.CanMoveRowAtIndexPath = { _, _ in false },
+        sectionIndexTitles: @escaping TableViewAnimatedSingleSectionDataSource<Cell.Model>.SectionIndexTitles = { _ in nil },
+        sectionForSectionIndexTitle: @escaping TableViewAnimatedSingleSectionDataSource<Cell.Model>.SectionForSectionIndexTitle = { _, _, index in index }
+    ) -> TableViewAnimatedSingleSectionDataSource<Cell.Model> where Cell: Configurable {
+        return TableViewAnimatedSingleSectionDataSource<Cell.Model>(
+            animationConfiguration: animationConfiguration,
+            decideViewTransition: decideViewTransition,
+            configureCell: { _, tableView, indexPath, model in
+                let cell = tableView.dequeueReusableCell(for: indexPath, model: model, cellType: cellType)
+                configureCell?(cell, indexPath, model)
+                return cell
+            },
+            titleForHeaderInSection: titleForHeaderInSection,
+            titleForFooterInSection: titleForFooterInSection,
+            canEditRowAtIndexPath: canEditRowAtIndexPath,
+            canMoveRowAtIndexPath: canMoveRowAtIndexPath,
+            sectionIndexTitles: sectionIndexTitles,
+            sectionForSectionIndexTitle: sectionForSectionIndexTitle
+        )
     }
     
 }

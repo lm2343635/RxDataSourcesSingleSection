@@ -38,7 +38,7 @@ public protocol Configurable: Reusable {
 }
 
 extension Configurable where Self: UITableViewCell {
-    
+
     public static func tableViewSingleSectionDataSource(
         configureCell: ConfigureCell? = nil,
         titleForHeaderInSection: @escaping TableViewSingleSectionDataSource<Model>.TitleForFooterInSection = { _, _ in nil },
@@ -48,16 +48,45 @@ extension Configurable where Self: UITableViewCell {
         sectionIndexTitles: @escaping TableViewSingleSectionDataSource<Model>.SectionIndexTitles = { _ in nil },
         sectionForSectionIndexTitle: @escaping TableViewSingleSectionDataSource<Model>.SectionForSectionIndexTitle = { _, _, index in index }
     ) -> TableViewSingleSectionDataSource<Model> {
-        return TableViewSingleSectionDataSource<Model>.configure(cellType: self, configureCell: configureCell)
+        return TableViewSingleSectionDataSource<Model>.configure(
+            cellType: self,
+            configureCell: configureCell,
+            titleForHeaderInSection: titleForFooterInSection,
+            titleForFooterInSection: titleForFooterInSection,
+            canEditRowAtIndexPath: canEditRowAtIndexPath,
+            canMoveRowAtIndexPath: canMoveRowAtIndexPath,
+            sectionIndexTitles: sectionIndexTitles,
+            sectionForSectionIndexTitle: sectionForSectionIndexTitle
+        )
     }
     
 }
 
 extension Configurable where Self: UITableViewCell, Model: AnimatableModel {
     
-    public static func tableViewAnimatedSingleSectionDataSource(configureCell: ConfigureCell? = nil)
-        -> TableViewAnimatedSingleSectionDataSource<Model> {
-        return TableViewAnimatedSingleSectionDataSource<Model>.configure(cellType: self, configureCell: configureCell)
+    public static func tableViewAnimatedSingleSectionDataSource(
+        animationConfiguration: AnimationConfiguration = AnimationConfiguration(),
+        decideViewTransition: @escaping TableViewAnimatedSingleSectionDataSource<Model>.DecideViewTransition = { _, _, _ in .animated },
+        configureCell: ConfigureCell? = nil,
+        titleForHeaderInSection: @escaping TableViewAnimatedSingleSectionDataSource<Model>.TitleForFooterInSection = { _, _ in nil },
+        titleForFooterInSection: @escaping TableViewAnimatedSingleSectionDataSource<Model>.TitleForFooterInSection = { _, _ in nil },
+        canEditRowAtIndexPath: @escaping TableViewAnimatedSingleSectionDataSource<Model>.CanEditRowAtIndexPath = { _, _ in false },
+        canMoveRowAtIndexPath: @escaping TableViewAnimatedSingleSectionDataSource<Model>.CanMoveRowAtIndexPath = { _, _ in false },
+        sectionIndexTitles: @escaping TableViewAnimatedSingleSectionDataSource<Model>.SectionIndexTitles = { _ in nil },
+        sectionForSectionIndexTitle: @escaping TableViewAnimatedSingleSectionDataSource<Model>.SectionForSectionIndexTitle = { _, _, index in index }
+    ) -> TableViewAnimatedSingleSectionDataSource<Model> {
+        return TableViewAnimatedSingleSectionDataSource<Model>.configure(
+            animationConfiguration: animationConfiguration,
+            decideViewTransition: decideViewTransition,
+            cellType: self,
+            configureCell: configureCell,
+            titleForHeaderInSection: titleForFooterInSection,
+            titleForFooterInSection: titleForFooterInSection,
+            canEditRowAtIndexPath: canEditRowAtIndexPath,
+            canMoveRowAtIndexPath: canMoveRowAtIndexPath,
+            sectionIndexTitles: sectionIndexTitles,
+            sectionForSectionIndexTitle: sectionForSectionIndexTitle
+        )
     }
 
 }

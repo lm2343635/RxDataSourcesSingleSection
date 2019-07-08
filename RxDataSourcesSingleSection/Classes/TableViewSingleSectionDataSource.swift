@@ -30,7 +30,8 @@ public typealias TableViewSingleSectionDataSource<T> = RxTableViewSectionedReloa
 extension TableViewSingleSectionDataSource {
     
     public static func configure<Cell: UITableViewCell>(
-        cellType: Cell.Type, configureCell: Cell.ConfigureCell? = nil,
+        cellType: Cell.Type,
+        configureCell: Cell.ConfigureCell? = nil,
         titleForHeaderInSection: @escaping TableViewSingleSectionDataSource<Cell.Model>.TitleForFooterInSection = { _, _ in nil },
         titleForFooterInSection: @escaping TableViewSingleSectionDataSource<Cell.Model>.TitleForFooterInSection = { _, _ in nil },
         canEditRowAtIndexPath: @escaping TableViewSingleSectionDataSource<Cell.Model>.CanEditRowAtIndexPath = { _, _ in false },
