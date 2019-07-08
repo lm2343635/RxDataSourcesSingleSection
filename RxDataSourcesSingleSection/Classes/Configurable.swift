@@ -24,6 +24,7 @@
 // THE SOFTWARE.
 
 import Reusable
+import RxDataSources
 import UIKit
 
 public protocol Configurable: Reusable {
@@ -38,8 +39,15 @@ public protocol Configurable: Reusable {
 
 extension Configurable where Self: UITableViewCell {
     
-    public static func tableViewSingleSectionDataSource(configureCell: ConfigureCell? = nil)
-        -> TableViewSingleSectionDataSource<Model> {
+    public static func tableViewSingleSectionDataSource(
+        configureCell: ConfigureCell? = nil,
+        titleForHeaderInSection: @escaping TableViewSingleSectionDataSource<Model>.TitleForFooterInSection = { _, _ in nil },
+        titleForFooterInSection: @escaping TableViewSingleSectionDataSource<Model>.TitleForFooterInSection = { _, _ in nil },
+        canEditRowAtIndexPath: @escaping TableViewSingleSectionDataSource<Model>.CanEditRowAtIndexPath = { _, _ in false },
+        canMoveRowAtIndexPath: @escaping TableViewSingleSectionDataSource<Model>.CanMoveRowAtIndexPath = { _, _ in false },
+        sectionIndexTitles: @escaping TableViewSingleSectionDataSource<Model>.SectionIndexTitles = { _ in nil },
+        sectionForSectionIndexTitle: @escaping TableViewSingleSectionDataSource<Model>.SectionForSectionIndexTitle = { _, _, index in index }
+    ) -> TableViewSingleSectionDataSource<Model> {
         return TableViewSingleSectionDataSource<Model>.configure(cellType: self, configureCell: configureCell)
     }
     

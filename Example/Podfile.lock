@@ -14,7 +14,7 @@ PODS:
     - Differentiator (~> 4.0)
     - RxCocoa (~> 5.0)
     - RxSwift (~> 5.0)
-  - RxDataSourcesSingleSection (0.1.1):
+  - RxDataSourcesSingleSection (0.2):
     - Reusable (~> 4)
     - RxCocoa (~> 5)
     - RxDataSources (~> 4)
@@ -53,7 +53,7 @@ SPEC CHECKSUMS:
   Reusable: 82be188f29d96dc5eff0db7b2393bcc08d2cdd5b
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
-  RxDataSourcesSingleSection: 42ee6900e6c069ce2d0bb9a1cd81308dce772d28
+  RxDataSourcesSingleSection: fc4ce148f510dfa39c7d0c0be753a83ace2d3030
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf

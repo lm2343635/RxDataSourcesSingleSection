@@ -29,13 +29,28 @@ public typealias TableViewSingleSectionDataSource<T> = RxTableViewSectionedReloa
 
 extension TableViewSingleSectionDataSource {
     
-    public static func configure<Cell: UITableViewCell>(cellType: Cell.Type, configureCell: Cell.ConfigureCell? = nil)
-        -> TableViewSingleSectionDataSource<Cell.Model> where Cell: Configurable {
-        return TableViewSingleSectionDataSource<Cell.Model>(configureCell: { _, tableView, indexPath, model in
-            let cell = tableView.dequeueReusableCell(for: indexPath, model: model, cellType: cellType)
-            configureCell?(cell, indexPath, model)
-            return cell
-        })
+    public static func configure<Cell: UITableViewCell>(
+        cellType: Cell.Type, configureCell: Cell.ConfigureCell? = nil,
+        titleForHeaderInSection: @escaping TableViewSingleSectionDataSource<Cell.Model>.TitleForFooterInSection = { _, _ in nil },
+        titleForFooterInSection: @escaping TableViewSingleSectionDataSource<Cell.Model>.TitleForFooterInSection = { _, _ in nil },
+        canEditRowAtIndexPath: @escaping TableViewSingleSectionDataSource<Cell.Model>.CanEditRowAtIndexPath = { _, _ in false },
+        canMoveRowAtIndexPath: @escaping TableViewSingleSectionDataSource<Cell.Model>.CanMoveRowAtIndexPath = { _, _ in false },
+        sectionIndexTitles: @escaping TableViewSingleSectionDataSource<Cell.Model>.SectionIndexTitles = { _ in nil },
+        sectionForSectionIndexTitle: @escaping TableViewSingleSectionDataSource<Cell.Model>.SectionForSectionIndexTitle = { _, _, index in index }
+    ) -> TableViewSingleSectionDataSource<Cell.Model> where Cell: Configurable {
+        return TableViewSingleSectionDataSource<Cell.Model>(
+            configureCell: { _, tableView, indexPath, model in
+                let cell = tableView.dequeueReusableCell(for: indexPath, model: model, cellType: cellType)
+                configureCell?(cell, indexPath, model)
+                return cell
+            },
+            titleForHeaderInSection: titleForHeaderInSection,
+            titleForFooterInSection: titleForFooterInSection,
+            canEditRowAtIndexPath: canEditRowAtIndexPath,
+            canMoveRowAtIndexPath: canMoveRowAtIndexPath,
+            sectionIndexTitles: sectionIndexTitles,
+            sectionForSectionIndexTitle: sectionForSectionIndexTitle
+        )
     }
     
 }
