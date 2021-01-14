@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RxDataSourcesSingleSection'
-  s.version          = '0.2.1'
+  s.version          = '0.3'
   s.summary          = 'SingleSection extensions for RxDataSources.'
 
 # This description is used to generate tags and improve search results.
@@ -26,13 +26,13 @@ This library provides simple extensions to create a table view or collection vie
   s.author           = { 'lm2343635' => 'lm2343635@126.com' }
   s.source           = { :git => 'https://github.com/lm2343635/RxDataSourcesSingleSection.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '9.0'
-  s.swift_version = '5.0'
+  s.ios.deployment_target = '10.0'
+  s.swift_version = '5.1'
   
   s.source_files = 'RxDataSourcesSingleSection/Classes/**/*'
   
-  s.dependency 'RxSwift', '~> 5'
-  s.dependency 'RxCocoa', '~> 5'
-  s.dependency 'RxDataSources', '~> 4'
+  s.dependency 'RxSwift', '~> 6'
+  s.dependency 'RxCocoa', '~> 6'
+  s.dependency 'RxDataSources', '~> 5'
   s.dependency 'Reusable', '~> 4'
 end
